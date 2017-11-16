@@ -1,6 +1,6 @@
 Codebook
 ========
-Codebook was generated on 2017-11-16 12:16:12 during the same process that generated the dataset. See `run_analysis.md` or `run_analysis.html` for details on dataset creation.
+Codebook was generated on 2017-11-16 12:17:35 during the same process that generated the dataset. See `run_analysis.md` or `run_analysis.html` for details on dataset creation.
 
 Variable list and descriptions
 ------------------------------
@@ -275,9 +275,9 @@ tidy_data[, .N, by=c(names(tidy_data)[grep("^feat", names(tidy_data))])]
 Save to file
 ------------
 
-Save data table objects to a tab-delimited text file called `humanactivity_recognition_Smartphones.txtf`.
+Save data table objects to a tab-delimited text file called `humanactivity_recognition_Smartphones.txt`.
 
 
 ```r
-write.table(x = tidy_data, file = "humanactivity_recognition_Smartphones.txtf", quote=FALSE, sep="\t", row.names=FALSE)
+write.table(x = tidy_data, file = "humanactivity_recognition_Smartphones.txt", quote=FALSE, sep="\t", row.names=FALSE)
 ```
