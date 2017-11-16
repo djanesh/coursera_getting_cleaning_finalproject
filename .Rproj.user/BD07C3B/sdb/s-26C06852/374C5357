@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# This project is done by Janesh Devkota on 2017-11-16\n\n# Please run this file in order to create codebook.md and analysis.md\n# While there are several libraries that are reference in analysis.R only knitr and markdown will be \n# required here\nrequire(knitr)\nrequire(markdown)\n# setwd(\"~/GitHub repositories/GettingAndCleaningData/Project\")\n#setwd(\"~/Repositories/Coursera/GettingAndCleaningData/Project\")\nknit(input = \"analysis.Rmd\", encoding=\"ISO8859-1\", output = \"analysis.md\")\nmarkdownToHTML(\"analysis.md\", \"run_analysis.html\")\n",
+    "created" : 1510861357754.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2351072263",
+    "id" : "374C5357",
+    "lastKnownWriteTime" : 1510861334,
+    "last_content_update" : 1510861334,
+    "path" : "~/repositories/R Projects/Coursera-classes/getting_cleaningdata/R/project/analysis.R",
+    "project_path" : "analysis.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
