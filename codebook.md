@@ -1,26 +1,46 @@
-Codebook
-========
-Codebook was generated on 2017-11-16 12:17:35 during the same process that generated the dataset. See `run_analysis.md` or `run_analysis.html` for details on dataset creation.
+# Codebook for the assignment
 
-Variable list and descriptions
-------------------------------
+The following Codebook was created on 2017-11-16. Please review analysis.Rmd or run_analysi.html for details. 
 
-Variable name    | Description
------------------|------------
+## Variable list and descriptions
+
+I am using R function to list the name of variable and description
+
+
+```r
+library(knitr)
+read.table(text = "Name of variable | Description
+featDomain       | Time domain signal or frequency domain signal (Time or Freq)
+featInstrument   | Measuring instrument (Accelerometer or Gyroscope)
+featAcceleration | Acceleration signal (Body or Gravity)
+featVariable     | Variable (Mean or SD)
+featJerk         | Jerk signal
+featMagnitude    | Magnitude of the signals calculated using the Euclidean norm
+featAxis         | 3-axial signals in the X, Y and Z directions (X, Y, or Z)
+featCount        | Count of data points used to compute `average`
+featAverage      | Average of each variable for each activity and each subject
 subject          | ID the subject who performed the activity for each window sample. Its range is from 1 to 30.
-activity         | Activity name
-featDomain       | Feature: Time domain signal or frequency domain signal (Time or Freq)
-featInstrument   | Feature: Measuring instrument (Accelerometer or Gyroscope)
-featAcceleration | Feature: Acceleration signal (Body or Gravity)
-featVariable     | Feature: Variable (Mean or SD)
-featJerk         | Feature: Jerk signal
-featMagnitude    | Feature: Magnitude of the signals calculated using the Euclidean norm
-featAxis         | Feature: 3-axial signals in the X, Y and Z directions (X, Y, or Z)
-featCount        | Feature: Count of data points used to compute `average`
-featAverage      | Feature: Average of each variable for each activity and each subject
+activity         | Activity name", header = T, sep = "|") %>% 
+  knitr::kable(col.names = c("Variable name", "Description"))
+```
 
-Dataset structure
------------------
+
+
+|Variable name    |Description                                                                                  |
+|:----------------|:--------------------------------------------------------------------------------------------|
+|featDomain       |Time domain signal or frequency domain signal (Time or Freq)                                 |
+|featInstrument   |Measuring instrument (Accelerometer or Gyroscope)                                            |
+|featAcceleration |Acceleration signal (Body or Gravity)                                                        |
+|featVariable     |Variable (Mean or SD)                                                                        |
+|featJerk         |Jerk signal                                                                                  |
+|featMagnitude    |Magnitude of the signals calculated using the Euclidean norm                                 |
+|featAxis         |3-axial signals in the X, Y and Z directions (X, Y, or Z)                                    |
+|featCount        |Count of data points used to compute `average`                                               |
+|featAverage      |Average of each variable for each activity and each subject                                  |
+|subject          |ID the subject who performed the activity for each window sample. Its range is from 1 to 30. |
+|activity         |Activity name                                                                                |
+
+## View the structure of dataset
 
 
 ```r
@@ -44,8 +64,7 @@ str(tidy_data)
 ##  - attr(*, ".internal.selfref")=<externalptr>
 ```
 
-List the key variables in the data table
-----------------------------------------
+## The key variables in the data table
 
 
 ```r
@@ -58,8 +77,7 @@ key(tidy_data)
 ## [7] "featMagnitude"    "featVariable"     "featAxis"
 ```
 
-Show a few rows of the dataset
-------------------------------
+## Review some of the data
 
 
 ```r
@@ -93,40 +111,7 @@ tidy_data
 ## 11880:     Jerk     Magnitude           SD       NA    65 -0.58087813
 ```
 
-Summary of variables
---------------------
-
-
-```r
-summary(tidy_data)
-```
-
-```
-##     subject                   activity    featDomain  featAcceleration
-##  Min.   : 1.0   LAYING            :1980   Time:7200   NA     :4680    
-##  1st Qu.: 8.0   SITTING           :1980   Freq:4680   Body   :5760    
-##  Median :15.5   STANDING          :1980               Gravity:1440    
-##  Mean   :15.5   WALKING           :1980                               
-##  3rd Qu.:23.0   WALKING_DOWNSTAIRS:1980                               
-##  Max.   :30.0   WALKING_UPSTAIRS  :1980                               
-##        featInstrument featJerk      featMagnitude  featVariable featAxis 
-##  Accelerometer:7200   NA  :7200   NA       :8640   Mean:5940    NA:3240  
-##  Gyroscope    :4680   Jerk:4680   Magnitude:3240   SD  :5940    X :2880  
-##                                                                 Y :2880  
-##                                                                 Z :2880  
-##                                                                          
-##                                                                          
-##      count          average        
-##  Min.   :36.00   Min.   :-0.99767  
-##  1st Qu.:49.00   1st Qu.:-0.96205  
-##  Median :54.50   Median :-0.46989  
-##  Mean   :57.22   Mean   :-0.48436  
-##  3rd Qu.:63.25   3rd Qu.:-0.07836  
-##  Max.   :95.00   Max.   : 0.97451
-```
-
-List all possible combinations of features
-------------------------------------------
+## View all the feature combinations using grep function
 
 
 ```r
@@ -272,10 +257,44 @@ tidy_data[, .N, by=c(names(tidy_data)[grep("^feat", names(tidy_data))])]
 ##     featVariable featAxis   N
 ```
 
-Save to file
+## Now let's look at summary statistics of variables
+
+
+```r
+# View summary of datatable
+summary(tidy_data)
+```
+
+```
+##     subject                   activity    featDomain  featAcceleration
+##  Min.   : 1.0   LAYING            :1980   Time:7200   NA     :4680    
+##  1st Qu.: 8.0   SITTING           :1980   Freq:4680   Body   :5760    
+##  Median :15.5   STANDING          :1980               Gravity:1440    
+##  Mean   :15.5   WALKING           :1980                               
+##  3rd Qu.:23.0   WALKING_DOWNSTAIRS:1980                               
+##  Max.   :30.0   WALKING_UPSTAIRS  :1980                               
+##        featInstrument featJerk      featMagnitude  featVariable featAxis 
+##  Accelerometer:7200   NA  :7200   NA       :8640   Mean:5940    NA:3240  
+##  Gyroscope    :4680   Jerk:4680   Magnitude:3240   SD  :5940    X :2880  
+##                                                                 Y :2880  
+##                                                                 Z :2880  
+##                                                                          
+##                                                                          
+##      count          average        
+##  Min.   :36.00   Min.   :-0.99767  
+##  1st Qu.:49.00   1st Qu.:-0.96205  
+##  Median :54.50   Median :-0.46989  
+##  Mean   :57.22   Mean   :-0.48436  
+##  3rd Qu.:63.25   3rd Qu.:-0.07836  
+##  Max.   :95.00   Max.   : 0.97451
+```
+
+
+## Save the data to a text file. Step 5 of the instruction.
 ------------
 
-Save data table objects to a tab-delimited text file called `humanactivity_recognition_Smartphones.txt`.
+I am going to save the data table object to a tab-delimited text file called `humanactivity_recognition_Smartphones.txt`. 
+The code is as follows:
 
 
 ```r

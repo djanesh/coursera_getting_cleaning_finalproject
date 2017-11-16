@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# Read Me\n\nThis project is the peer-graded assignemnt of course `Getting and Cleaning Data in Coursera`. \n\nIn order to reproduce the analysis open the project in Rstudio with the `project.Rproj` file. \nIf not using Rstudio, the peer should set the working directory to the location where they save \nthese files. \n\n## Steps to reproduce\n\n* Open the R script `analysis.R` using Rstudio or any other text editor. \n* Uncomment setwd() in the `analysis.R` to specify the working directory. \n* Then Run `analysis.R` file.\n\n## Outputs\n\nThe outputs produced by running `analysis.R` are as follows\n\n* Tidy dataset `humanactivity_recognition_Smartphones.txt`\n* Codebook file `cookbook.md` and `cookbook.html`\n* Markdown / html output `analysis.Rmd` and `run_analysis.html`\n\n",
+    "created" : 1510866147971.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1169380668",
+    "id" : "CBB6175A",
+    "lastKnownWriteTime" : 1510866476,
+    "last_content_update" : 1510866476743,
+    "path" : "~/repositories/R Projects/Coursera-classes/getting_cleaningdata/R/project/README.md",
+    "project_path" : "README.md",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "markdown"
+}

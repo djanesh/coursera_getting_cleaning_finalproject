@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title>Codebook</title>
+<title>Codebook for the assignment</title>
 
 <script type="text/javascript">
 window.onload = function() {
@@ -201,65 +201,83 @@ hr {
 </head>
 
 <body>
-<h1>Codebook</h1>
+<h1>Codebook for the assignment</h1>
 
-<p>Codebook was generated on 2017-11-16 12:17:35 during the same process that generated the dataset. See <code>run_analysis.md</code> or <code>run_analysis.html</code> for details on dataset creation.</p>
+<p>The following Codebook was created on 2017-11-16. Please review analysis.Rmd or run_analysi.html for details. </p>
 
 <h2>Variable list and descriptions</h2>
 
+<p>I am using R function to list the name of variable and description</p>
+
+<pre><code class="r">library(knitr)
+read.table(text = &quot;Name of variable | Description
+featDomain       | Time domain signal or frequency domain signal (Time or Freq)
+featInstrument   | Measuring instrument (Accelerometer or Gyroscope)
+featAcceleration | Acceleration signal (Body or Gravity)
+featVariable     | Variable (Mean or SD)
+featJerk         | Jerk signal
+featMagnitude    | Magnitude of the signals calculated using the Euclidean norm
+featAxis         | 3-axial signals in the X, Y and Z directions (X, Y, or Z)
+featCount        | Count of data points used to compute `average`
+featAverage      | Average of each variable for each activity and each subject
+subject          | ID the subject who performed the activity for each window sample. Its range is from 1 to 30.
+activity         | Activity name&quot;, header = T, sep = &quot;|&quot;) %&gt;% 
+  knitr::kable(col.names = c(&quot;Variable name&quot;, &quot;Description&quot;))
+</code></pre>
+
 <table><thead>
 <tr>
-<th>Variable name</th>
-<th>Description</th>
+<th align="left">Variable name</th>
+<th align="left">Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>subject</td>
-<td>ID the subject who performed the activity for each window sample. Its range is from 1 to 30.</td>
+<td align="left">featDomain</td>
+<td align="left">Time domain signal or frequency domain signal (Time or Freq)</td>
 </tr>
 <tr>
-<td>activity</td>
-<td>Activity name</td>
+<td align="left">featInstrument</td>
+<td align="left">Measuring instrument (Accelerometer or Gyroscope)</td>
 </tr>
 <tr>
-<td>featDomain</td>
-<td>Feature: Time domain signal or frequency domain signal (Time or Freq)</td>
+<td align="left">featAcceleration</td>
+<td align="left">Acceleration signal (Body or Gravity)</td>
 </tr>
 <tr>
-<td>featInstrument</td>
-<td>Feature: Measuring instrument (Accelerometer or Gyroscope)</td>
+<td align="left">featVariable</td>
+<td align="left">Variable (Mean or SD)</td>
 </tr>
 <tr>
-<td>featAcceleration</td>
-<td>Feature: Acceleration signal (Body or Gravity)</td>
+<td align="left">featJerk</td>
+<td align="left">Jerk signal</td>
 </tr>
 <tr>
-<td>featVariable</td>
-<td>Feature: Variable (Mean or SD)</td>
+<td align="left">featMagnitude</td>
+<td align="left">Magnitude of the signals calculated using the Euclidean norm</td>
 </tr>
 <tr>
-<td>featJerk</td>
-<td>Feature: Jerk signal</td>
+<td align="left">featAxis</td>
+<td align="left">3-axial signals in the X, Y and Z directions (X, Y, or Z)</td>
 </tr>
 <tr>
-<td>featMagnitude</td>
-<td>Feature: Magnitude of the signals calculated using the Euclidean norm</td>
+<td align="left">featCount</td>
+<td align="left">Count of data points used to compute <code>average</code></td>
 </tr>
 <tr>
-<td>featAxis</td>
-<td>Feature: 3-axial signals in the X, Y and Z directions (X, Y, or Z)</td>
+<td align="left">featAverage</td>
+<td align="left">Average of each variable for each activity and each subject</td>
 </tr>
 <tr>
-<td>featCount</td>
-<td>Feature: Count of data points used to compute <code>average</code></td>
+<td align="left">subject</td>
+<td align="left">ID the subject who performed the activity for each window sample. Its range is from 1 to 30.</td>
 </tr>
 <tr>
-<td>featAverage</td>
-<td>Feature: Average of each variable for each activity and each subject</td>
+<td align="left">activity</td>
+<td align="left">Activity name</td>
 </tr>
 </tbody></table>
 
-<h2>Dataset structure</h2>
+<h2>View the structure of dataset</h2>
 
 <pre><code class="r">str(tidy_data)
 </code></pre>
@@ -280,7 +298,7 @@ hr {
 ##  - attr(*, &quot;.internal.selfref&quot;)=&lt;externalptr&gt;
 </code></pre>
 
-<h2>List the key variables in the data table</h2>
+<h2>The key variables in the data table</h2>
 
 <pre><code class="r">key(tidy_data)
 </code></pre>
@@ -290,7 +308,7 @@ hr {
 ## [7] &quot;featMagnitude&quot;    &quot;featVariable&quot;     &quot;featAxis&quot;
 </code></pre>
 
-<h2>Show a few rows of the dataset</h2>
+<h2>Review some of the data</h2>
 
 <pre><code class="r">tidy_data
 </code></pre>
@@ -321,35 +339,7 @@ hr {
 ## 11880:     Jerk     Magnitude           SD       NA    65 -0.58087813
 </code></pre>
 
-<h2>Summary of variables</h2>
-
-<pre><code class="r">summary(tidy_data)
-</code></pre>
-
-<pre><code>##     subject                   activity    featDomain  featAcceleration
-##  Min.   : 1.0   LAYING            :1980   Time:7200   NA     :4680    
-##  1st Qu.: 8.0   SITTING           :1980   Freq:4680   Body   :5760    
-##  Median :15.5   STANDING          :1980               Gravity:1440    
-##  Mean   :15.5   WALKING           :1980                               
-##  3rd Qu.:23.0   WALKING_DOWNSTAIRS:1980                               
-##  Max.   :30.0   WALKING_UPSTAIRS  :1980                               
-##        featInstrument featJerk      featMagnitude  featVariable featAxis 
-##  Accelerometer:7200   NA  :7200   NA       :8640   Mean:5940    NA:3240  
-##  Gyroscope    :4680   Jerk:4680   Magnitude:3240   SD  :5940    X :2880  
-##                                                                 Y :2880  
-##                                                                 Z :2880  
-##                                                                          
-##                                                                          
-##      count          average        
-##  Min.   :36.00   Min.   :-0.99767  
-##  1st Qu.:49.00   1st Qu.:-0.96205  
-##  Median :54.50   Median :-0.46989  
-##  Mean   :57.22   Mean   :-0.48436  
-##  3rd Qu.:63.25   3rd Qu.:-0.07836  
-##  Max.   :95.00   Max.   : 0.97451
-</code></pre>
-
-<h2>List all possible combinations of features</h2>
+<h2>View all the feature combinations using grep function</h2>
 
 <pre><code class="r">tidy_data[, .N, by=c(names(tidy_data)[grep(&quot;^feat&quot;, names(tidy_data))])]
 </code></pre>
@@ -492,9 +482,41 @@ hr {
 ##     featVariable featAxis   N
 </code></pre>
 
-<h2>Save to file</h2>
+<h2>Now let&#39;s look at summary statistics of variables</h2>
 
-<p>Save data table objects to a tab-delimited text file called <code>humanactivity_recognition_Smartphones.txt</code>.</p>
+<pre><code class="r"># View summary of datatable
+summary(tidy_data)
+</code></pre>
+
+<pre><code>##     subject                   activity    featDomain  featAcceleration
+##  Min.   : 1.0   LAYING            :1980   Time:7200   NA     :4680    
+##  1st Qu.: 8.0   SITTING           :1980   Freq:4680   Body   :5760    
+##  Median :15.5   STANDING          :1980               Gravity:1440    
+##  Mean   :15.5   WALKING           :1980                               
+##  3rd Qu.:23.0   WALKING_DOWNSTAIRS:1980                               
+##  Max.   :30.0   WALKING_UPSTAIRS  :1980                               
+##        featInstrument featJerk      featMagnitude  featVariable featAxis 
+##  Accelerometer:7200   NA  :7200   NA       :8640   Mean:5940    NA:3240  
+##  Gyroscope    :4680   Jerk:4680   Magnitude:3240   SD  :5940    X :2880  
+##                                                                 Y :2880  
+##                                                                 Z :2880  
+##                                                                          
+##                                                                          
+##      count          average        
+##  Min.   :36.00   Min.   :-0.99767  
+##  1st Qu.:49.00   1st Qu.:-0.96205  
+##  Median :54.50   Median :-0.46989  
+##  Mean   :57.22   Mean   :-0.48436  
+##  3rd Qu.:63.25   3rd Qu.:-0.07836  
+##  Max.   :95.00   Max.   : 0.97451
+</code></pre>
+
+<h2>Save the data to a text file. Step 5 of the instruction.</h2>
+
+<hr/>
+
+<p>I am going to save the data table object to a tab-delimited text file called <code>humanactivity_recognition_Smartphones.txt</code>. 
+The code is as follows:</p>
 
 <pre><code class="r">write.table(x = tidy_data, file = &quot;humanactivity_recognition_Smartphones.txt&quot;, quote=FALSE, sep=&quot;\t&quot;, row.names=FALSE)
 </code></pre>

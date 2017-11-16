@@ -1,63 +1,65 @@
-Codebook
-========
-Codebook was generated on `r as.character(Sys.time())` during the same process that generated the dataset. See `run_analysis.md` or `run_analysis.html` for details on dataset creation.
+# Codebook for the assignment
 
-Variable list and descriptions
-------------------------------
+The following Codebook was created on 2017-11-16. Please review analysis.Rmd or run_analysi.html for details. 
 
-Variable name    | Description
------------------|------------
+## Variable list and descriptions
+
+I am using R function to list the name of variable and description
+
+```{r}
+library(knitr)
+read.table(text = "Name of variable | Description
+featDomain       | Time domain signal or frequency domain signal (Time or Freq)
+featInstrument   | Measuring instrument (Accelerometer or Gyroscope)
+featAcceleration | Acceleration signal (Body or Gravity)
+featVariable     | Variable (Mean or SD)
+featJerk         | Jerk signal
+featMagnitude    | Magnitude of the signals calculated using the Euclidean norm
+featAxis         | 3-axial signals in the X, Y and Z directions (X, Y, or Z)
+featCount        | Count of data points used to compute `average`
+featAverage      | Average of each variable for each activity and each subject
 subject          | ID the subject who performed the activity for each window sample. Its range is from 1 to 30.
-activity         | Activity name
-featDomain       | Feature: Time domain signal or frequency domain signal (Time or Freq)
-featInstrument   | Feature: Measuring instrument (Accelerometer or Gyroscope)
-featAcceleration | Feature: Acceleration signal (Body or Gravity)
-featVariable     | Feature: Variable (Mean or SD)
-featJerk         | Feature: Jerk signal
-featMagnitude    | Feature: Magnitude of the signals calculated using the Euclidean norm
-featAxis         | Feature: 3-axial signals in the X, Y and Z directions (X, Y, or Z)
-featCount        | Feature: Count of data points used to compute `average`
-featAverage      | Feature: Average of each variable for each activity and each subject
+activity         | Activity name", header = T, sep = "|") %>% 
+  knitr::kable(col.names = c("Variable name", "Description"))
+```
 
-Dataset structure
------------------
+## View the structure of dataset
 
 ```{r}
 str(tidy_data)
 ```
 
-List the key variables in the data table
-----------------------------------------
+## The key variables in the data table
 
 ```{r}
 key(tidy_data)
 ```
 
-Show a few rows of the dataset
-------------------------------
+## Review some of the data
 
 ```{r}
 tidy_data
 ```
 
-Summary of variables
---------------------
-
-```{r}
-summary(tidy_data)
-```
-
-List all possible combinations of features
-------------------------------------------
+## View all the feature combinations using grep function
 
 ```{r}
 tidy_data[, .N, by=c(names(tidy_data)[grep("^feat", names(tidy_data))])]
 ```
 
-Save to file
+## Now let's look at summary statistics of variables
+
+```{r}
+# View summary of datatable
+summary(tidy_data)
+```
+
+
+## Save the data to a text file. Step 5 of the instruction.
 ------------
 
-Save data table objects to a tab-delimited text file called `humanactivity_recognition_Smartphones.txt`.
+I am going to save the data table object to a tab-delimited text file called `humanactivity_recognition_Smartphones.txt`. 
+The code is as follows:
 
 ```{r save}
 write.table(x = tidy_data, file = "humanactivity_recognition_Smartphones.txt", quote=FALSE, sep="\t", row.names=FALSE)

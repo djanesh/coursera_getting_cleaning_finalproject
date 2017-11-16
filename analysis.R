@@ -3,6 +3,7 @@
 # Please run this file in order to create codebook.md and analysis.md
 # While there are several libraries that are reference in analysis.R only knitr and markdown will be 
 # required here
+# setwd()
 require(knitr)
 require(markdown)
 
